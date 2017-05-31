@@ -1,2 +1,2 @@
 # redux-saga-try
-Playing with redux-saga ! 
+trying redux-saga instead of thunk.  
