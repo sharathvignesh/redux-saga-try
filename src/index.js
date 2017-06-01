@@ -1,25 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './Components/App';
-import registerServiceWorker from './registerServiceWorker';
-import './Styles/index.css';
-
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux' // It is the connector between react and redux.
-import {Router, Route, IndexRoute, browserHistory} from 'react-router';
-import {syncHistoryWithStore} from 'react-router-redux';
-
-import createLogger from 'redux-logger';
-import reducer from './Reducer/reducer'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore, applyMiddleware } from 'redux'
+import {Provider} from 'react-redux';
 import createSagaMiddleware from 'redux-saga'
 
-import {sayHello} from './Sagas/saga';
+import Gallery from './Components/Gallery'
+import reducer from './Reducer'
 
-const logger = createLogger();
+import {watchLoadImages} from './Sagas';
+
 const store = createStore(
   reducer,
-  applyMiddleware(createSagaMiddleware(sayHello))
+  applyMiddleware(createSagaMiddleware(watchLoadImages))
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+  <Provider store={store}>
+    <Gallery />
+  </Provider>,
+  document.getElementById('root')
+);
