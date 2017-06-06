@@ -15,6 +15,7 @@ export function* loadImages() {
 }
 
 export function* watchLoadImages() {
+  console.log("watch load saga");
   while (true) {
     yield take('LOAD_IMAGES');
     yield call(loadImages);
