@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux';
 
 import GalleryImage from './GalleryImage';
 import GalleryThumbs from './GalleryThumbs';
+import './../Styles/App.css';
 
 //import {loadImages} from "../Actions";
 import * as ImageGalleryActions from "../Actions";
@@ -17,10 +18,10 @@ export class Gallery extends Component {
   render() {
     const {images, selectImage, selectedImage} = this.props;
     return (
-      <div className="image-gallery" hidden={!selectedImage}>
-        <GalleryImage image={selectedImage} />
-        <GalleryThumbs selectImage={selectImage} images={images} />
-      </div>
+        <div className="image-gallery" hidden={!selectedImage}>
+          <GalleryImage image={selectedImage} />
+          <GalleryThumbs selectImage={selectImage} images={images} />
+        </div>
     )
   }
 }

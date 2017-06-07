@@ -5,7 +5,8 @@ import { createStore, applyMiddleware } from 'redux'
 import {Provider} from 'react-redux';
 import createSagaMiddleware from 'redux-saga'
 
-import Gallery from './Components/Gallery'
+import App from './Components/App'
+//import Gallery from './Components/Gallery'
 import reducer from './Reducer'
 
 import {watchLoadImages} from './Sagas';
@@ -21,7 +22,7 @@ sagaMiddleware.run(watchLoadImages);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Gallery />
+    <App />
   </Provider>,
   document.getElementById('root')
 );
